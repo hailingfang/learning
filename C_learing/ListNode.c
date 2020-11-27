@@ -1,28 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define arraylen(array) (sizeof(array))/(sizeof(*array))
+#define print(x) printf("%d\n", (x))
+#define Debug
+#undef Debug
 typedef struct ListNode {int val; struct ListNode * next;} LIST;
-LIST * creat_list(int *, int);
-
+static LIST * creat_list(int *, int);
+static LIST * addTwoNum(LIST *, LIST *);
 
 int
 main(void)
 {
-    int a1[] = {1, 2, 3, 4};
-    int a2[] = {5, 6, 7, 8};
+    int a1[] = {1, 2, 3, 4, 9, 9, 9};
+    int a2[] = {5, 6, 7, 8, 9};
     LIST * a1r;
+    LIST * a2r;
     a1r = creat_list(a1, arraylen(a1));
+    a2r = creat_list(a2, arraylen(a2));
+    LIST * summ;
+
+    summ = addTwoNum(a1r, a2r);
+    do {
+        print(summ->val);
+    } while((summ->next) && (summ = summ->next));
+
+
+#ifdef Debug
     while(a1r->next){
         printf("%d\n", a1r->val);
         a1r = a1r->next;
     }
     printf("%d\n", a1r->val);
-   
+#endif
+
     return 0;
 }
 
 
-LIST *
+static LIST *
 creat_list(int * arr, int n)
 {
     LIST * dt_out;
@@ -38,5 +53,80 @@ creat_list(int * arr, int n)
     }
     return dt_out;
 }
+
+
+static LIST *
+addTwoNum(LIST * l1, LIST * l2)
+{
+    unsigned int lenl1=0, lenl2=0, lenless=0;
+    unsigned int new=0, up=0;
+    LIST * res;
+    LIST * head;
+    LIST * tmp1 = l1;
+    LIST * tmp2 = l2;
+    res = (LIST *)malloc(sizeof(LIST));
+    head = res;
+
+    do{
+        lenl1 ++;
+        
+    }while((tmp1->next) && (tmp1 = tmp1->next));
+    do{
+        lenl2 ++;
+    }while((tmp2->next) && (tmp2 = tmp2->next));
+    lenless = (lenl1 < lenl2 ? lenl1: lenl2);
+    //print(lenless);
+    for(int i = 0; i < lenless; i ++){
+        new = (l1->val + l2->val + up)%10;
+        //print(new);
+        up = (l1->val + l2->val + up)/10;
+        head->val = new;
+        if(i < lenless - 1){
+            head->next = (LIST *)malloc(sizeof(LIST));
+            head = head->next;
+        }
+        l1 = l1->next;
+        l2 = l2->next;
+    } 
+
+
+    if (lenl1 > lenl2) {
+        for (int i = 0; i < lenl1 - lenl2; i++) {
+            new = (l1->val + up)%10;
+            up = (l1->val + up)/10;
+            LIST * tmp = (LIST *)malloc(sizeof(LIST));
+            tmp->val = new;
+            head->next = tmp;
+            head = head->next;
+            l1 = l1->next;
+        }
+    }
+    else if (lenl1 < lenl2) {
+        for (int i = 0; i < lenl2 - lenl1; i++) {
+            new = (l2->val + up)%10;
+            up = (l2->val + up)/10;
+            LIST * tmp = (LIST *)malloc(sizeof(LIST));
+            tmp->val = new;
+            head->next = tmp;
+            head = head->next;
+            l2 = l2->next;
+        }
+    }
+
+    if (up > 0){
+        LIST * tmp = (LIST *)malloc(sizeof(LIST));
+        tmp->val = up;
+        head->next = tmp;
+    }
+
+#ifdef Debug
+    printf("len of l1 %d\n", lenl1);
+    printf("len of l2 %d\n", lenl1);
+#endif
+
+    return res;
+}
+
+
 
 
