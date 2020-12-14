@@ -1,4 +1,31 @@
 #! /usr/bin/env python3
+""" pariwised alignment based on dynamic programing."""
+import argparse
+
+
+def parse_args():
+    pass
+
+
+def calculate_scorting_matrix(seqa, seqb):
+    match_score = 5
+    mismatch = 4
+    gapopen = 10
+    gapextend = 0.5
+    record = {}
+# 0: start, 1: match, 2: mismatch, 3: gap
+    for cc in range(len(seqb) + 1):
+        record[(0, cc)] = (0, 0)
+    for rr in range(1, len(seqa) + 1):
+        record[(rr, 0)] = (0, 0)
+    rr = cc = 0
+    for elea in seqa:
+        rr += 1
+        for eleb in seqb:
+            cc += 1
+            if elea == eleb:
+                record[(rr, cc)] = (record[(rr - 1, cc - 1)[0] + match_score], 1)
+            elif record[]
 
 
 def lagest_common_subsequence(seq_a, seq_b):
@@ -85,5 +112,17 @@ def main():
     return 0
 
 
+def test():
+    seq_a = 'CGAGCTGAACGGGCAATGCAGGAAGAGTTCTACCTGGAACTGAAAGAAGGCTTACTGGAGCCGCTGGCAGTGACGGAACG'
+    seq_b = 'GAACGGTCAATGCGGAAGAGTTCTACCTGGAACTGGAAGGCTTACTGGAGCCGCTGGCAGTGACGGAACG'
+    calculate_scorting_matrix(seq_a, seq_b)
+    pass
+
+
 if __name__ == '__main__':
-    main()
+    #main()
+    test()
+
+
+
+

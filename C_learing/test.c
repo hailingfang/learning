@@ -1,20 +1,16 @@
 #include <stdio.h>
-
-int pp(int *);
+#include <string.h>
 
 int
 main(void)
 {
-    int a[] = {1, 2, 3};
-    printf("%u\n", sizeof(a));
-    printf("%d\n", *a);
-    pp(a);
-    return 0;
-
+    
+    char * x = "abc";
+    printf(x);
+    char * y = "def";
+    char z[7];
+    strcpy(z, x);
+    strcpy(z, y);
+    printf("%s|\n", z);
 }
 
-int
-pp(int * n)
-{
-    printf("%u\n", sizeof(n));
-}
