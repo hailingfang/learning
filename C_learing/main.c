@@ -93,7 +93,7 @@ integrate_line_part(struct Line_part * Line_first_ele)
     while(head->next){
         line_len += strlen(head->line_p);
         head = head->next;
-    } 
+    }
     line_len += strlen(head->line_p);
     char * res = (char *) malloc(line_len + 1);
     head = Line_first_ele;
@@ -108,4 +108,3 @@ integrate_line_part(struct Line_part * Line_first_ele)
     }
     return res;
 }
-
