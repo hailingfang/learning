@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-
+#if defined __linux || __linux__
+#include <unistd.h>
+//#include <sys/stat.h>
+#else 
+#warning "Not suppot this OS"
+#endif
 
 int
 main(int argc, char *argv[])
@@ -41,6 +46,10 @@ main(int argc, char *argv[])
     printf("\b \b\n");
 
     fclose(fin);
+#if defined __linux || __linux__
+    unlink("intout");
+    //mkdir("whh", 0770);
+#endif
 
     return 0;
 }
