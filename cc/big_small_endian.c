@@ -47,7 +47,7 @@ main(int argc, char *argv[])
 
     fclose(fin);
 #if defined __linux || __linux__
-    unlink("intout");
+    //unlink("intout");
     //mkdir("whh", 0770);
 #endif
 
