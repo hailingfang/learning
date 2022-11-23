@@ -18,7 +18,7 @@ fhladd_add(PyObject *self, PyObject *args)
 
 
 static PyMethodDef fhladd_method[] = {
-    {"add", fhladd_add, METH_VARARGS},
+    {"add", fhladd_add, METH_VARARGS, NULL},
     {NULL, NULL, 0, NULL}
 };
 
