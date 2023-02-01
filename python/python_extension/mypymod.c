@@ -13,8 +13,8 @@ testfunc(PyObject *self, PyObject *args)
     }
     
     PyObject * arg1 = PyTuple_GetItem(args, 0);
-    if (PyType_GetFlags(Py_TYPE(arg1)) != PyType_GetFlags(&PyList_Type)) {
-        printf("arg1 should be list Py_Type.\n");
+    if (!PyList_Check(arg1)) {
+        printf("arg1 should be list PyList_Type.\n");
         return res;
     }
     unsigned long list_len = PyList_Size(arg1);
