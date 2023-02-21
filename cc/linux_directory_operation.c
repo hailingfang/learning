@@ -27,7 +27,7 @@ main(int argc, char *argv[])
                 if (strcmp(".", dp->d_name) != 0 && strcmp("..", dp->d_name) != 0) {
                     strcpy(fname, dirname);
                     strcat(fname, "/");
-                    strcat(fname, "dp->d_name");
+                    strcat(fname, dp->d_name);
                     if (unlink(fname)) {
                         fprintf(stderr, "%s remove failed.\n", fname);
                     } else {
