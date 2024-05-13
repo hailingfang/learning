@@ -1,4 +1,3 @@
 # learning
-#smith_waterman
 
-Test
+Codes and information created for leaning and practice purposes.
