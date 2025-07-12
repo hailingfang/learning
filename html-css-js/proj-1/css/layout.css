@@ -16,11 +16,13 @@ p {
 
 
 html, body {
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 body {
     background-color: gray;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -30,9 +32,9 @@ header {
 }
 
 main {
+    flex: 1;
     background-color: rgb(85, 221, 85);
     min-width: 50em;
-    min-height: 10%;
 
     display: flex;
     flex-direction: row;
@@ -50,24 +52,33 @@ main {
     flex: 10;
     min-width: 50em;
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: stretch;
+    justify-items: stretch;
+
 }
 
 .stickers {
+    background-color: rgb(173, 173, 93);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    row-gap: 1em;
-    column-gap: 2em;
+    row-gap: min(1em, 5%);
+    column-gap: min(2em, 5%);
+    padding: 10% 5%;
+    margin: 0;
+    align-items: stretch;
+    justify-items: center;
 
-    padding: 19.5em 5em;
-    margin: 0 auto;
-    width: 80%;
 }
 
 .stickers div {
     background-color: aqua;
-    min-width: 15em;
-    min-height: 5em;
+    min-height: 12em;
+    min-width: 12em;
+    width: 80%;
 }
 
 
