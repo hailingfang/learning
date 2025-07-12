@@ -1,0 +1,78 @@
+html,
+body,
+header,
+main,
+footer,
+div,
+p {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background-color: gray;
+}
+
+header {
+    background-color: rgb(216, 86, 86);
+    min-width: 50em;
+    min-height: 5em;
+}
+
+main {
+    background-color: rgb(85, 221, 85);
+    min-width: 50em;
+    min-height: 10%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.main-left {
+    flex: 3;
+    min-width: 20em;
+    border: 1px solid black;
+}
+
+.main-right {
+    flex: 10;
+    min-width: 50em;
+    border: 1px solid black;
+}
+
+.stickers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    row-gap: 1em;
+    column-gap: 2em;
+
+    padding: 19.5em 5em;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.stickers div {
+    background-color: aqua;
+    min-width: 15em;
+    min-height: 5em;
+}
+
+
+footer {
+    background-color: rgb(99, 99, 223);
+    min-width: 50em;
+    min-height: 5em;
+}
