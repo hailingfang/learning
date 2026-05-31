@@ -80,9 +80,10 @@ main(int argc, char *argv[])
 
             if (tag_id == 257) {
                 tag_dt.ImageLength = *valueoffset_p;
+            
             }
-
-            if (tag_id == 258) {
+            
+            else if (tag_id == 258) {
                 assert(data_type == 3);
                 assert(data_num == 3);
                 fpos_t fcp;
@@ -93,15 +94,15 @@ main(int argc, char *argv[])
                 fsetpos(fin, &fcp);
             }
 
-            if (tag_id == 259) {
+            else if (tag_id == 259) {
                 tag_dt.Compression = (uint16_t)(*valueoffset_p);
             }
 
-            if (tag_id == 262) {
+            else if (tag_id == 262) {
                 tag_dt.PhotometricInterpretation = (uint16_t)(*valueoffset_p);
             }
 
-            if (tag_id == 273) {
+            else if (tag_id == 273) {
                 tag_dt.StripOffsets_n = data_num;
                 if (data_num > 1) {
                     fpos_t fcp;
@@ -115,15 +116,15 @@ main(int argc, char *argv[])
                 }
             }
 
-            if (tag_id == 274) {
+            else if (tag_id == 274) {
                 tag_dt.SamplesPerPixel = (uint16_t)*valueoffset_p;
             }
         
-            if (tag_id == 278) {
+            else if (tag_id == 278) {
                 tag_dt.RowsPerStrip = *valueoffset_p;
             }
             
-            if (tag_id == 279) {
+            else if (tag_id == 279) {
                 tag_dt.StripByteCounts_n = data_num;
                 if (data_num > 2) {
                     fpos_t fcp;
